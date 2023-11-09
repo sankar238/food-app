@@ -1,0 +1,30 @@
+{
+  "name": "namaste",
+  "version": "1.0.0",
+  "description": "this is food app",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sankar238/food-app.git"
+  },
+  "keywords": [],
+  "author": "sankar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sankar238/food-app/issues"
+  },
+  "homepage": "https://github.com/sankar238/food-app#readme",
+  "devDependencies": {
+    "parcel": "^2.10.2",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist" : [
+    "last 2 versions"
+  ]
+}
