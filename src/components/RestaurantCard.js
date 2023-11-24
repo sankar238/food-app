@@ -1,4 +1,4 @@
-import { CDN_URL } from "../utils/constants";
+import { CDN_IMG_URL } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
     const {
@@ -15,7 +15,7 @@ const RestaurantCard = ({ resData }) => {
         >
             <img
                 className="res-logo"
-                src={CDN_URL + resData?.info?.cloudinaryImageId}
+                src={CDN_IMG_URL + resData?.info?.cloudinaryImageId}
                 alt="res-logo"
             />
             <h3>{name}</h3>

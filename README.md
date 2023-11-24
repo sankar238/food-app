@@ -51,3 +51,11 @@ two types of Export/Import
     -useState
     -useEffect
     
+# React-Router-DOM
+ 
+ -two types of routing in web apps
+
+   1- client side routing (Single Page Application)
+      -app is loaded once andjust  components are inter-changed.
+   2-server sode routing
+      -makes a network call
