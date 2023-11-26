@@ -10,7 +10,7 @@ class UserClass extends React.Component {
             avatar_url : this.props.avatar_url
           }
         }
-        console.log("child constuctor")
+        // console.log("child constuctor")
     }
      async componentDidMount(){
         const res = await fetch("https://api.github.com/users/sankar238")
@@ -18,16 +18,16 @@ class UserClass extends React.Component {
         this.setState({
             userInfo : data
         })
-        console.log(" child component did mount ")
+        // console.log(" child component did mount ")
       }
     componentDidUpdate (){
-        console.log("component did update")
+        // console.log("component did update")
     }
     componentWillUnmount(){
-        console.log("component will unmount")
+        // console.log("component will unmount")
     }
     render() {
-        console.log("child render")
+        // console.log("child render")
         const {name ,location,avatar_url} = this.state.userInfo;
         // console.log(name,location,avatar_url)
         const {contact} = this.props
