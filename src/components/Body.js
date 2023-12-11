@@ -1,15 +1,17 @@
-import RestaurantCard from "./RestaurantCard";
-import {useState,useEffect} from "react";
+import RestaurantCard,{withPromotedLable} from "./RestaurantCard";
+import {useState,useEffect,useContext} from "react";
 import {Link} from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { MAIN_API_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
     const [searchText,setSearchText] = useState("");
     const [listOfRestaurants,setListOfRestaurants] = useState(null);
     const [filteredRestaurants,setFilteredRestaurants]=useState(null)
     const onlineStatus = useOnlineStatus()
+    const {loggedInUser , setUserName} = useContext(UserContext)
     useEffect(()=>{
          fetchData()
     },[])
@@ -27,12 +29,16 @@ const Body = () => {
             <h1 style={{marginLeft : 30, marginTop:50, color : "red"}}>looks like you're offline..plz turn-on your internet </h1>
         )
     }
+
+    const PromotedRestaurantCard = withPromotedLable(RestaurantCard)
+   
+
     return (
         <div className="body">
             <div className="filter flex items-center">
                <div>
                  <input
-                    className="search-box ml-4 p-1 mr-1 my-4"
+                    className="search-box ml-4 p-1 mr-1 my-4  border border-black"
                     type="text"
                     value={searchText}
                     onChange={(e)=>{
@@ -63,13 +69,25 @@ const Body = () => {
                 >
                 TopRatedRestaurants
                 </button>
+                <div>
+                    <label>UserName :</label>
+                    <input 
+                        className="px-2 py-1"
+                        value={loggedInUser}
+                        onChange={(e)=>(
+                            setUserName(e.target.value)
+                        )}
+                    />
+                </div>
             </div>
             <div className="res-container flex flex-wrap">
                 {filteredRestaurants.map((res) => (
                   <Link 
                     to={"/restaurants/"+res?.info?.id}
                     key={res?.info?.id}>
-                    <RestaurantCard resData={res}/>
+                 { res?.info?.aggregatedDiscountInfoV3 
+                    ?<PromotedRestaurantCard resData={res}/>
+                    :<RestaurantCard resData={res}/>}
                   </Link>  
                 ))}
             </div>
